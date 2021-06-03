@@ -16,7 +16,7 @@ router.get('/list/:page', function(req, res, next) {
       console.log('err =>> ' +err);
     }
 
-    // list.ejs 렌더링
+    // 뷰로 렌더링
     res.render('list', {title: '게시판 리스트', rows: rows});
   });
 });
