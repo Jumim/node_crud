@@ -10,6 +10,7 @@ router.get('/list', function(req, res, next) {
 
 router.get('/list/:page', function(req, res, next) {
   var page = req.params.page; // 페이징을 위한 page 변수
+
   var sql = "select po_num, po_name, po_mmname, date_format(po_date, '%Y년 %m월 %d일 %H시 %i분 %s초') po_date from demo.post";
 
   // DB Connect
@@ -20,6 +21,27 @@ router.get('/list/:page', function(req, res, next) {
 
     // 뷰로 렌더링
     res.render('list', {title: '게시판 리스트', rows: rows});
+  });
+});
+
+// 페이징 구현
+router.get('/page', function(req, res, next) {
+  res.redirect('/board/page/1');
+});
+
+router.get('/page/:page', function(req, res, next) {
+  var page = req.params.page;
+
+  var sql = "select po_num, po_name, po_mmname, date_format(po_date, '%Y년 %m월 %d일 %H시 %i분 %s초') po_date from demo.post";
+
+  conn.query(sql, function(err, rows) {
+    if( err ) {
+      console.log('err =>> ' +err);
+    }
+
+    res.render('page', {title: '게시판 리스트', rows: rows, page: page, length: rows.length - 1, page_num: 10, pass: true});
+
+    console.log(rows.length - 1);
   });
 });
 
