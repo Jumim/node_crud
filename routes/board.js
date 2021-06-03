@@ -35,12 +35,12 @@ router.post('/write', function(req, res, next) {
   var po_name    = req.body.title;
   var po_mmname  = req.body.name;
   var po_content = req.body.content;
-  var datas = [po_name, po_content, po_mmname];
+  var datas      = [po_name, po_content, po_mmname];
 
   var sql = "insert into demo.post (po_bocode, po_name, po_cacode, po_price, po_content, po_mmcode, po_mmname, po_date) " +
             "values ('B001', ?, 1, 10, ?, '-', ?, now())";
 
-  conn.query(sql, datas, function(err, rows) {
+  conn.query(sql, datas, function(err) {
     if( err ) {
       console.log('err =>> ' +err);
     }
@@ -50,8 +50,58 @@ router.post('/write', function(req, res, next) {
   });
 });
 
+// 게시글 상세보기
+router.get('/read/:po_num', function(req, res, next) {
+  var po_num = req.params.po_num;
+
+  var sql = "select po_num, po_name, po_content, po_mmname, date_format(po_date, '%Y년 %m월 %d일 %H시 %i분 %s초') po_date from demo.post " +
+            "where po_num = ?";
+
+  conn.query(sql, [po_num], function(err, row) {
+    if( err ) {
+      console.log('err =>> ' +err);
+    }
+
+    // 뷰로 렌더링
+    res.render('read', {title: '게시글 상세보기', row: row[0]});
+  });
+});
+
 // 게시글 수정
+router.get('/update/:po_num', function(req, res, next) {
+  var po_num = req.params.po_num;
+
+  var sql = "select po_num, po_name, po_content, po_mmname from demo.post where po_num = ?";
+
+  conn.query(sql, [po_num], function(err, row) {
+    if( err ) {
+      console.log('err =>> ' +err);
+    }
+
+    res.render('update', {title: '게시글 수정', row: row[0]});
+  });
+
+});
+
+router.post('/update', function(req, res, next) {
+  var po_num     = req.body.num;
+  var po_name    = req.body.title;
+  var po_mmname  = req.body.name;
+  var po_content = req.body.content;
+  var datas      = [po_name, po_mmname, po_content, po_num];
+
+  var sql = "update demo.post set po_name = ?, po_mmname = ?, po_content = ? where po_num = ?";
+
+  conn.query(sql, datas, function(err){
+    if( err ) {
+      console.log('err =>> ' +err);
+    }
+
+    res.redirect('/board/read/' +po_num);   // 해당 게시글로 리다이렉트
+  });
+});
 
 // 게시글 삭제
+
 
 module.exports = router;

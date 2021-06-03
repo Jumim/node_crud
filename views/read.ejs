@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title><%= title %></title>
+</head>
+
+<body>
+  <table border="1">
+    <tr>
+      <td>번호</td>
+      <td><%= row.po_num %></td>
+    </tr>
+    <tr>
+      <td>제목</td>
+      <td><%= row.po_name %></td>
+    </tr>
+    <tr>
+      <td>작성자</td>
+      <td><%= row.po_mmname %></td>
+    </tr>
+    <tr>
+      <td>내용</td>
+      <td><textarea name="content" id="content" cols="30" rows="10" required readonly><%= row.po_content %></textarea></td>
+    </tr>
+    <tr>
+      <td>작성날</td>
+      <td><%= row.po_date %></td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <a href="/board/update/<%=row.po_num%>">게시글 수정</a>
+        <a href="/board/list">목록</a>
+        <a href="/board/delete">삭제</a>
+      </td>
+    </tr>
+  </table>
+</body>
+
+</html>
