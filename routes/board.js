@@ -45,7 +45,7 @@ router.post('/write', function(req, res, next) {
       console.log('err =>> ' +err);
     }
 
-    // 뷰로 렌더링
+    // 게시글 목록으로 리다이렉트
     res.redirect('/board/list');
   });
 });
@@ -83,6 +83,7 @@ router.get('/update/:po_num', function(req, res, next) {
 
 });
 
+// update.ejs에서 form 넘어 온 정보를 통해 DB update
 router.post('/update', function(req, res, next) {
   var po_num     = req.body.num;
   var po_name    = req.body.title;
@@ -102,6 +103,18 @@ router.post('/update', function(req, res, next) {
 });
 
 // 게시글 삭제
+router.get('/delete/:po_num', function(req, res, next) {
+  var po_num = req.params.po_num;
 
+  var sql = "delete from post where po_num = ?";
+
+  conn.query(sql, [po_num], function(err) {
+    if( err ) {
+      console.log('err =>> ' +err);
+    }
+
+    res.redirect('/board/list');
+  });
+});
 
 module.exports = router;
