@@ -28,6 +28,7 @@ router.get('/write', function(req, res, next) {
   res.render('write', {title: '게시글 작성'});
 });
 
+// write.ejs에서 form으로 넘어 온 정보를 통해 DB에 insert
 router.post('/write', function(req, res, next) {
 
   // form에서 받아온 정보
