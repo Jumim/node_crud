@@ -31,8 +31,7 @@ router.get('/page/:page', function(req, res, next) {
 
   var sql = "select bo_num, bo_title, bo_name, date_format(bo_date, '%Y년 %m월 %d일 %H시 %i분 %s초') bo_date from node.board ";
 
-  if(keyword === undefind) {
-
+  if(keyword === undefined) {
   } else {
     sql += "where bo_title like '%" + keyword + "%' ";
   }
@@ -141,26 +140,6 @@ router.get('/delete/:bo_num', function(req, res, next) {
     }
 
     res.redirect('/board/page');
-  });
-});
-
-// 게시글 검색
-router.get('/search', function(req, res, next) {
-  var keyword = req.query.search_keyword;
-
-  console.log("keyword =>> " + keyword);
-
-  var sql = "select bo_num, bo_title, bo_name, date_format(bo_date, '%Y년 %m월 %d일 %H시 %i분 %s초') bo_date from node.board " +
-            " where bo_title like '%" + keyword + "%' " +
-            " order by bo_date desc limit 1000";
-  console.log("sql =>> " + sql);
-
-  conn.query(sql, function(err, rows) {
-    if (err) {
-      console.log('err =>> ' + err);
-    }
-
-    res.render('board/list', {title: '게시글 검색', rows: rows});
   });
 });
 
