@@ -31,6 +31,7 @@ router.get('/page/:page', function(req, res, next) {
 
   var sql = "select bo_num, bo_title, bo_name, date_format(bo_date, '%Y년 %m월 %d일 %H시 %i분 %s초') bo_date from node.board ";
 
+  // 키워드 없으면 where 추가 안함
   if(keyword === undefined) {
   } else {
     sql += "where bo_title like '%" + keyword + "%' ";
