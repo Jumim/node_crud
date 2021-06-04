@@ -1,24 +1,56 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-    <link rel='stylesheet' href='/stylesheets/index.css' />
-  </head>
-  <body>
 
-    <% include ./etc/header %>
+<head>
+  <title><%= title %></title>
 
-    <div class="main_area1">
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
+
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <link rel='stylesheet' href='/stylesheets/index.css' />
+
+</head>
+
+<body>
+
+  <% include ./etc/header %>
+
+  <div class="main_area1">
+
+  </div>
+  <div class="main_area2">
+    <h1>NCT DREAM ALBUM </h1>
+
+    <!-- Slider main container -->
+    <div class="swiper-container">
+      <!-- Additional required wrapper -->
+      <div class="swiper-wrapper">
+        <!-- Slides -->
+        <div class="swiper-slide">Slide 1</div>
+        <div class="swiper-slide">Slide 2</div>
+        <div class="swiper-slide">Slide 3</div>
+        <div class="swiper-slide">Slide 4</div>
+        <div class="swiper-slide">Slide 5</div>
+      </div>
     </div>
-    <div class="main_area2">
 
-    </div>
-    <div class="main_area3">
+  </div>
+  <div class="main_area3">
 
-    </div>
+  </div>
 
-    <% include ./etc/footer %>
-  </body>
+  <% include ./etc/footer %>
+</body>
+
+<script type="text/javascript">
+  var swiper = new Swiper('.swiper-container', {
+    slidesPerView: 4,
+    spaceBetween: 30,
+    centeredSlides: true,
+  });
+</script>
+
 </html>
