@@ -11,7 +11,7 @@ router.get('/list', function(req, res, next) {
 router.get('/list/:page', function(req, res, next) {
   var page = req.params.page; // 페이징을 위한 page 변수
 
-  var sql = "select po_num, po_name, po_mmname, date_format(po_date, '%Y년 %m월 %d일 %H시 %i분 %s초') po_date from demo.post";
+  var sql = "select bo_num, bo_title, bo_name, date_format(bo_date, '%Y년 %m월 %d일 %H시 %i분 %s초') bo_date from node.board";
 
   // DB Connect
   conn.query(sql, function(err, rows) {
@@ -32,7 +32,7 @@ router.get('/page', function(req, res, next) {
 router.get('/page/:page', function(req, res, next) {
   var page = req.params.page;
 
-  var sql = "select po_num, po_name, po_mmname, date_format(po_date, '%Y년 %m월 %d일 %H시 %i분 %s초') po_date from demo.post order by po_date desc limit 1000";
+  var sql = "select bo_num, bo_title, bo_name, date_format(bo_date, '%Y년 %m월 %d일 %H시 %i분 %s초') bo_date from node.board order by bo_date desc limit 1000";
 
   conn.query(sql, function(err, rows) {
     if( err ) {
@@ -54,13 +54,13 @@ router.get('/write', function(req, res, next) {
 router.post('/write', function(req, res, next) {
 
   // form에서 받아온 정보
-  var po_name    = req.body.title;
-  var po_mmname  = req.body.name;
-  var po_content = req.body.content;
-  var datas      = [po_name, po_content, po_mmname];
+  var bo_title    = req.body.title;
+  var bo_content = req.body.content;
+  var bo_name  = req.body.name;
+  var datas      = [bo_title, bo_content, bo_name];
 
-  var sql = "insert into demo.post (po_bocode, po_name, po_cacode, po_price, po_content, po_mmcode, po_mmname, po_date) " +
-            "values ('B001', ?, 1, 10, ?, '-', ?, now())";
+  var sql = "insert into node.board (bo_title, bo_content, bo_name, bo_date) " +
+            "values (?, ?, ?, now())";
 
   conn.query(sql, datas, function(err) {
     if( err ) {
@@ -73,13 +73,13 @@ router.post('/write', function(req, res, next) {
 });
 
 // 게시글 상세보기
-router.get('/read/:po_num', function(req, res, next) {
-  var po_num = req.params.po_num;
+router.get('/read/:bo_num', function(req, res, next) {
+  var bo_num = req.params.bo_num;
 
-  var sql = "select po_num, po_name, po_content, po_mmname, date_format(po_date, '%Y년 %m월 %d일 %H시 %i분 %s초') po_date from demo.post " +
-            "where po_num = ?";
+  var sql = "select bo_num, bo_title, bo_content, bo_name, date_format(bo_date, '%Y년 %m월 %d일 %H시 %i분 %s초') bo_date from node.board " +
+            "where bo_num = ?";
 
-  conn.query(sql, [po_num], function(err, row) {
+  conn.query(sql, [bo_num], function(err, row) {
     if( err ) {
       console.log('err =>> ' +err);
     }
@@ -90,10 +90,10 @@ router.get('/read/:po_num', function(req, res, next) {
 });
 
 // 게시글 수정
-router.get('/update/:po_num', function(req, res, next) {
-  var po_num = req.params.po_num;
+router.get('/update/:bo_num', function(req, res, next) {
+  var bo_num = req.params.bo_num;
 
-  var sql = "select po_num, po_name, po_content, po_mmname from demo.post where po_num = ?";
+  var sql = "select bo_num, bo_title, bo_content, bo_name from node.board where bo_num = ?";
 
   conn.query(sql, [po_num], function(err, row) {
     if( err ) {
@@ -107,13 +107,13 @@ router.get('/update/:po_num', function(req, res, next) {
 
 // update.ejs에서 form 넘어 온 정보를 통해 DB update
 router.post('/update', function(req, res, next) {
-  var po_num     = req.body.num;
-  var po_name    = req.body.title;
-  var po_mmname  = req.body.name;
-  var po_content = req.body.content;
-  var datas      = [po_name, po_mmname, po_content, po_num];
+  var bo_num     = req.body.num;
+  var bo_title    = req.body.title;
+  var bo_content = req.body.content;
+  var bo_name  = req.body.name;
+  var datas      = [bo_title, bo_name, bo_content, bo_num];
 
-  var sql = "update demo.post set po_name = ?, po_mmname = ?, po_content = ? where po_num = ?";
+  var sql = "update node.board set bo_title = ?, bo_name = ?, bo_content = ? where bo_num = ?";
 
   conn.query(sql, datas, function(err){
     if( err ) {
@@ -125,12 +125,12 @@ router.post('/update', function(req, res, next) {
 });
 
 // 게시글 삭제
-router.get('/delete/:po_num', function(req, res, next) {
-  var po_num = req.params.po_num;
+router.get('/delete/:bo_num', function(req, res, next) {
+  var bo_num = req.params.bo_num;
 
-  var sql = "delete from post where po_num = ?";
+  var sql = "delete from node.board where bo_num = ?";
 
-  conn.query(sql, [po_num], function(err) {
+  conn.query(sql, [bo_num], function(err) {
     if( err ) {
       console.log('err =>> ' +err);
     }
