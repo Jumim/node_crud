@@ -32,14 +32,14 @@ router.get('/page', function(req, res, next) {
 router.get('/page/:page', function(req, res, next) {
   var page = req.params.page;
 
-  var sql = "select po_num, po_name, po_mmname, date_format(po_date, '%Y년 %m월 %d일 %H시 %i분 %s초') po_date from demo.post";
+  var sql = "select po_num, po_name, po_mmname, date_format(po_date, '%Y년 %m월 %d일 %H시 %i분 %s초') po_date from demo.post order by po_date desc limit 1000";
 
   conn.query(sql, function(err, rows) {
     if( err ) {
       console.log('err =>> ' +err);
     }
 
-    res.render('page', {title: '게시판 리스트', rows: rows, page: page, length: rows.length - 1, page_num: 10, pass: true});
+    res.render('board/page', {title: '게시판 리스트', rows: rows, page: page, length: rows.length - 1, page_num: 10, pass: true});
 
     console.log(rows.length - 1);
   });
@@ -47,7 +47,7 @@ router.get('/page/:page', function(req, res, next) {
 
 // 게시글 작성
 router.get('/write', function(req, res, next) {
-  res.render('write', {title: '게시글 작성'});
+  res.render('board/write', {title: '게시글 작성'});
 });
 
 // write.ejs에서 form으로 넘어 온 정보를 통해 DB에 insert
@@ -68,7 +68,7 @@ router.post('/write', function(req, res, next) {
     }
 
     // 게시글 목록으로 리다이렉트
-    res.redirect('/board/list');
+    res.redirect('/board/page');
   });
 });
 
@@ -85,7 +85,7 @@ router.get('/read/:po_num', function(req, res, next) {
     }
 
     // 뷰로 렌더링
-    res.render('read', {title: '게시글 상세보기', row: row[0]});
+    res.render('board/read', {title: '게시글 상세보기', row: row[0]});
   });
 });
 
@@ -100,7 +100,7 @@ router.get('/update/:po_num', function(req, res, next) {
       console.log('err =>> ' +err);
     }
 
-    res.render('update', {title: '게시글 수정', row: row[0]});
+    res.render('board/update', {title: '게시글 수정', row: row[0]});
   });
 
 });
@@ -135,7 +135,7 @@ router.get('/delete/:po_num', function(req, res, next) {
       console.log('err =>> ' +err);
     }
 
-    res.redirect('/board/list');
+    res.redirect('/board/page');
   });
 });
 
