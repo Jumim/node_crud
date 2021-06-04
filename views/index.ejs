@@ -22,20 +22,20 @@
 
   </div>
   <div class="main_area2">
-    <h1>NCT DREAM ALBUM </h1>
+    <p>NCT DREAM ALBUM </p>
 
     <!-- Slider main container -->
     <div class="swiper-container">
       <!-- Additional required wrapper -->
       <div class="swiper-wrapper">
         <!-- Slides -->
-        <div class="swiper-slide"><img src="/images/album/hotsauce.jfif" alt="hotsauce"></div>
-        <div class="swiper-slide"><img src="/images/album/reroad.jfif" alt="reroad"></div>
-        <div class="swiper-slide"><img src="/images/album/weboom.jfif" alt=""></div>
-        <div class="swiper-slide"><img src="/images/album/wegoup.jfif" alt="wegoup"></div>
-        <div class="swiper-slide"><img src="/images/album/weyoung.jfif" alt="weyoung"></div>
-        <div class="swiper-slide"><img src="/images/album/thefirst.jfif" alt="thefirst"></div>
-        <div class="swiper-slide"><img src="/images/album/chewinggum.jfif" alt="chewinggum"></div>
+        <div class="swiper-slide slide1"><img src="/images/album/hotsauce.jfif" alt="hotsauce"></div>
+        <div class="swiper-slide slide2"><img src="/images/album/reroad.jfif" alt="reroad"></div>
+        <div class="swiper-slide slide3"><img src="/images/album/weboom.jfif" alt="weboom"></div>
+        <div class="swiper-slide slide4"><img src="/images/album/wegoup.jfif" alt="wegoup"></div>
+        <div class="swiper-slide slide5"><img src="/images/album/weyoung.jfif" alt="weyoung"></div>
+        <div class="swiper-slide slide6"><img src="/images/album/thefirst.jfif" alt="thefirst"></div>
+        <div class="swiper-slide slide7"><img src="/images/album/chewinggum.jfif" alt="chewinggum"></div>
       </div>
     </div>
 
@@ -49,10 +49,34 @@
 
 <script type="text/javascript">
   var swiper = new Swiper('.swiper-container', {
-    slidesPerView: 4,
-    spaceBetween: 20,
+    slidesPerView: 3,
+    spaceBetween: 100,
     centeredSlides: true,
   });
+
+  $(document).ready(function() {
+
+  });
+
+  // 스크립트가 되게 비효율적이라는 생각이 드네;;
+  $('.swiper-wrapper').on('mousemove', function() {
+    if( $('.swiper-slide-active').hasClass('slide1') ) {
+      $('.swiper-container').css('background-image', "url('/images/album/hotsauce.jfif')");
+    }else if( $('.swiper-slide-active').hasClass('slide2') ) {
+      $('.swiper-container').css('background-image', "url('/images/album/reroad.jfif')");
+    }else if( $('.swiper-slide-active').hasClass('slide3') ) {
+      $('.swiper-container').css('background-image', "url('/images/album/weboom.jfif')");
+    }else if( $('.swiper-slide-active').hasClass('slide4') ) {
+      $('.swiper-container').css('background-image', "url('/images/album/wegoup.jfif')");
+    }else if( $('.swiper-slide-active').hasClass('slide5') ) {
+      $('.swiper-container').css('background-image', "url('/images/album/weyoung.jfif')");
+    }else if( $('.swiper-slide-active').hasClass('slide6') ) {
+      $('.swiper-container').css('background-image', "url('/images/album/thefirst.jfif')");
+    }else {
+      $('.swiper-container').css('background-image', "url('/images/album/chewinggum.jfif')");
+    }
+  });
+
 </script>
 
 </html>
