@@ -4,11 +4,6 @@
 <head>
   <title><%= title %></title>
 
-  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-
-  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
-
   <link rel='stylesheet' href='/stylesheets/style.css' />
   <link rel='stylesheet' href='/stylesheets/index.css' />
 
@@ -16,84 +11,6 @@
 
 <body>
 
-  <div class="header">
-    <ul>
-      <li><a href="/"><img src="/images/nctdream_logo4.png" alt="logo"></a></li>
-      <li>
-        <!--
-        <a href="/board/list">list</a>
-        <a href="/board/page">page</a>
-        <a href="/board/write">write</a>
-        -->
-      </li>
-      <li></li>
-      <li></li>
-    </ul>
-  </div>
-
-  <div class="index_body">
-    <div class="main_area1">
-
-    </div>
-    <div class="main_area2">
-      <p>NCT DREAM ALBUM </p>
-
-      <!-- Slider main container -->
-      <div class="swiper-container">
-        <!-- Additional required wrapper -->
-        <div class="swiper-wrapper">
-          <!-- Slides -->
-          <div class="swiper-slide slide1"><img src="/images/album/hotsauce.jfif" alt="hotsauce"></div>
-          <div class="swiper-slide slide2"><img src="/images/album/reroad.jfif" alt="reroad"></div>
-          <div class="swiper-slide slide3"><img src="/images/album/weboom.jfif" alt="weboom"></div>
-          <div class="swiper-slide slide4"><img src="/images/album/wegoup.jfif" alt="wegoup"></div>
-          <div class="swiper-slide slide5"><img src="/images/album/weyoung.jfif" alt="weyoung"></div>
-          <div class="swiper-slide slide6"><img src="/images/album/thefirst.jfif" alt="thefirst"></div>
-          <div class="swiper-slide slide7"><img src="/images/album/chewinggum.jfif" alt="chewinggum"></div>
-        </div>
-      </div>
-
-    </div>
-    <div class="main_area3">
-
-    </div>
-  </div>
-
-  <% include ./etc/footer %>
 </body>
-
-<script type="text/javascript">
-  var swiper = new Swiper('.swiper-container', {
-    slidesPerView: 3,
-    spaceBetween: 100,
-    centeredSlides: true,
-    loop: true,
-  });
-
-  $(document).ready(function() {
-
-  });
-
-  // 스크립트가 되게 비효율적이라는 생각이 드네;;
-  // 나중에 변경 할 예정
-  $('.swiper-wrapper').on('mousemove', function() {
-    if( $('.swiper-slide-active').hasClass('slide1') ) {
-      $('.swiper-container').css('background-image', "url('/images/album/hotsauce.jfif')");
-    }else if( $('.swiper-slide-active').hasClass('slide2') ) {
-      $('.swiper-container').css('background-image', "url('/images/album/reroad.jfif')");
-    }else if( $('.swiper-slide-active').hasClass('slide3') ) {
-      $('.swiper-container').css('background-image', "url('/images/album/weboom.jfif')");
-    }else if( $('.swiper-slide-active').hasClass('slide4') ) {
-      $('.swiper-container').css('background-image', "url('/images/album/wegoup.jfif')");
-    }else if( $('.swiper-slide-active').hasClass('slide5') ) {
-      $('.swiper-container').css('background-image', "url('/images/album/weyoung.jfif')");
-    }else if( $('.swiper-slide-active').hasClass('slide6') ) {
-      $('.swiper-container').css('background-image', "url('/images/album/thefirst.jfif')");
-    }else {
-      $('.swiper-container').css('background-image', "url('/images/album/chewinggum.jfif')");
-    }
-  });
-
-</script>
 
 </html>

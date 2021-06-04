@@ -139,4 +139,24 @@ router.get('/delete/:bo_num', function(req, res, next) {
   });
 });
 
+// 게시글 검색
+router.get('/search', function(req, res, next) {
+  var keyword = req.body.search_keyword;
+
+  console.log("keyword =>> " +keyword);
+
+  var sql = "select bo_num, bo_title, bo_name, date_format(bo_date, '%Y년 %m월 %d일 %H시 %i분 %s초') bo_date from node.board" +
+            "where bo_title = '%?%'" +
+            "order by bo_date desc limit 1000";
+
+  conn.query(sql, [keyword], function(err, rows) {
+    if( err ) {
+      console.log('err =>> ' +err);
+    }
+
+    res.render('/board/page', {title: '게시글 검색', rows: rows});
+  });
+});
+
+
 module.exports = router;
