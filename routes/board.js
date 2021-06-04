@@ -20,7 +20,7 @@ router.get('/list/:page', function(req, res, next) {
     }
 
     // 뷰로 렌더링
-    res.render('list', {title: '게시판 리스트', rows: rows});
+    res.render('board/list', {title: '게시판 리스트', rows: rows});
   });
 });
 
