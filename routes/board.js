@@ -5,12 +5,6 @@ var conn = mysql_odbc.init();
 
 // 게시글 목록
 router.get('/list', function(req, res, next) {
-  res.redirect('/board/list/1');
-});
-
-router.get('/list/:page', function(req, res, next) {
-  var page = req.params.page; // 페이징을 위한 page 변수
-
   var sql = "select bo_num, bo_title, bo_name, date_format(bo_date, '%Y년 %m월 %d일 %H시 %i분 %s초') bo_date from node.board";
 
   // DB Connect
@@ -141,22 +135,22 @@ router.get('/delete/:bo_num', function(req, res, next) {
 
 // 게시글 검색
 router.get('/search', function(req, res, next) {
-  var keyword = req.body.search_keyword;
+  var keyword = req.query.search_keyword;
 
-  console.log("keyword =>> " +keyword);
+  console.log("keyword =>> " + keyword);
 
-  var sql = "select bo_num, bo_title, bo_name, date_format(bo_date, '%Y년 %m월 %d일 %H시 %i분 %s초') bo_date from node.board" +
-            "where bo_title = '%?%'" +
-            "order by bo_date desc limit 1000";
+  var sql = "select bo_num, bo_title, bo_name, date_format(bo_date, '%Y년 %m월 %d일 %H시 %i분 %s초') bo_date from node.board " +
+            " where bo_title like '%" + keyword + "%' " +
+            " order by bo_date desc limit 1000";
+  console.log("sql =>> " + sql);
 
-  conn.query(sql, [keyword], function(err, rows) {
-    if( err ) {
-      console.log('err =>> ' +err);
+  conn.query(sql, function(err, rows) {
+    if (err) {
+      console.log('err =>> ' + err);
     }
 
-    res.render('/board/page', {title: '게시글 검색', rows: rows});
+    res.render('board/list', {title: '게시글 검색', rows: rows});
   });
 });
-
 
 module.exports = router;
