@@ -1,3 +1,7 @@
+body {
+  padding: 0 !important;
+}
+
 .main_area1 {
   position: relative;
   width: 100%;
