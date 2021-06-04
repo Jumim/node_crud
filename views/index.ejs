@@ -16,32 +16,47 @@
 
 <body>
 
-  <% include ./etc/header %>
-
-  <div class="main_area1">
-
+  <div class="header">
+    <ul>
+      <li><a href="/"><img src="/images/nctdream_logo4.png" alt="logo"></a></li>
+      <li>
+        <!--
+        <a href="/board/list">list</a>
+        <a href="/board/page">page</a>
+        <a href="/board/write">write</a>
+        -->
+      </li>
+      <li></li>
+      <li></li>
+    </ul>
   </div>
-  <div class="main_area2">
-    <p>NCT DREAM ALBUM </p>
 
-    <!-- Slider main container -->
-    <div class="swiper-container">
-      <!-- Additional required wrapper -->
-      <div class="swiper-wrapper">
-        <!-- Slides -->
-        <div class="swiper-slide slide1"><img src="/images/album/hotsauce.jfif" alt="hotsauce"></div>
-        <div class="swiper-slide slide2"><img src="/images/album/reroad.jfif" alt="reroad"></div>
-        <div class="swiper-slide slide3"><img src="/images/album/weboom.jfif" alt="weboom"></div>
-        <div class="swiper-slide slide4"><img src="/images/album/wegoup.jfif" alt="wegoup"></div>
-        <div class="swiper-slide slide5"><img src="/images/album/weyoung.jfif" alt="weyoung"></div>
-        <div class="swiper-slide slide6"><img src="/images/album/thefirst.jfif" alt="thefirst"></div>
-        <div class="swiper-slide slide7"><img src="/images/album/chewinggum.jfif" alt="chewinggum"></div>
-      </div>
+  <div class="index_body">
+    <div class="main_area1">
+
     </div>
+    <div class="main_area2">
+      <p>NCT DREAM ALBUM </p>
 
-  </div>
-  <div class="main_area3">
+      <!-- Slider main container -->
+      <div class="swiper-container">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+          <!-- Slides -->
+          <div class="swiper-slide slide1"><img src="/images/album/hotsauce.jfif" alt="hotsauce"></div>
+          <div class="swiper-slide slide2"><img src="/images/album/reroad.jfif" alt="reroad"></div>
+          <div class="swiper-slide slide3"><img src="/images/album/weboom.jfif" alt="weboom"></div>
+          <div class="swiper-slide slide4"><img src="/images/album/wegoup.jfif" alt="wegoup"></div>
+          <div class="swiper-slide slide5"><img src="/images/album/weyoung.jfif" alt="weyoung"></div>
+          <div class="swiper-slide slide6"><img src="/images/album/thefirst.jfif" alt="thefirst"></div>
+          <div class="swiper-slide slide7"><img src="/images/album/chewinggum.jfif" alt="chewinggum"></div>
+        </div>
+      </div>
 
+    </div>
+    <div class="main_area3">
+
+    </div>
   </div>
 
   <% include ./etc/footer %>
@@ -60,6 +75,7 @@
   });
 
   // 스크립트가 되게 비효율적이라는 생각이 드네;;
+  // 나중에 변경 할 예정
   $('.swiper-wrapper').on('mousemove', function() {
     if( $('.swiper-slide-active').hasClass('slide1') ) {
       $('.swiper-container').css('background-image', "url('/images/album/hotsauce.jfif')");

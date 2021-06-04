@@ -4,12 +4,13 @@
 <head>
   <title><%= title %></title>
   <link rel='stylesheet' href='/stylesheets/style.css' />
+  <link rel="stylesheet" href="/stylesheets/board/page.css">
 </head>
 
 <body>
   <h1><%= title %></h1>
-  <a href="/board/write">글쓰기</a>
-  <table border="1">
+  <a href="/board/write" class="write">글쓰기</a>
+  <table border="1" class="page_table">
     <tr>
       <td>번호</td>
       <td>작성자</td>
@@ -42,6 +43,10 @@
       </td>
     </tr>
   </table>
+  <form action="/board/search">
+    <input type="text" placeholder="검색어를 입력해주세요." name="search_keyword" />
+    <button type="submit" class="search_btn">검색</button>
+  </form>
 </body>
 
 </html>

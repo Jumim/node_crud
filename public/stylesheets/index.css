@@ -2,6 +2,42 @@ body {
   padding: 0 !important;
 }
 
+/* head */
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background-color: transparent;
+  z-index: 9999;
+}
+
+.header ul {
+  display: grid;
+  grid-template-columns: 140px 45% 20% 25%;
+  padding: 40px;
+}
+
+.header ul li {
+  align-self: center;
+}
+
+.header ul li:nth-child(2) {
+  padding-left: 40px;
+}
+
+.header ul li:nth-child(2) a {
+  color: #fff;
+  font-size: 22px;
+  margin-right: 55px;
+}
+
+.header ul li a img {
+  height: 60px;
+}
+
+/* body */
 .main_area1 {
   position: relative;
   width: 100%;
