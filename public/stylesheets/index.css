@@ -22,19 +22,19 @@ body {
 }
 
 .main_area2 p {
+  display: none;
   position: absolute;
-  top: -22px;
+  top: -40px;
   left: 36px;
   z-index: 2;
-  font-size: 50px;
+  font-size: 80px;
+  color: #fff;
 }
 
 .main_area2 .swiper-container {
-  padding: 200px 0;
+  padding: 11.2% 0;
   background-image: url('/images/album/hotsauce.jfif');
-  background-repeat: no-repeat;
   background-position: center;
-  background-size: cover;
 }
 
 .main_area2 .swiper-container::before {
@@ -45,7 +45,7 @@ body {
   width: 100vw;
   height: 100%;
   background-color: #000;
-  opacity: 0.4;
+  opacity: 0.6;
 }
 
 .main_area2 .swiper-wrapper {

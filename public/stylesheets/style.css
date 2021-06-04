@@ -17,6 +17,7 @@ ul, li {
 }
 
 body {
+  min-width: 1700px;
   padding-top: 100px;
   font: 14px 'paybooc-Bold', 'Lucida Grande', Helvetica, Arial, sans-serif;
 }
