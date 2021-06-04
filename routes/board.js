@@ -25,8 +25,19 @@ router.get('/page', function(req, res, next) {
 
 router.get('/page/:page', function(req, res, next) {
   var page = req.params.page;
+  var keyword = req.query.search_keyword;   // 검색용 파라미터 받아오기(get으로 받음)
 
-  var sql = "select bo_num, bo_title, bo_name, date_format(bo_date, '%Y년 %m월 %d일 %H시 %i분 %s초') bo_date from node.board order by bo_date desc limit 1000";
+  console.log("keyword =>> " +keyword);
+
+  var sql = "select bo_num, bo_title, bo_name, date_format(bo_date, '%Y년 %m월 %d일 %H시 %i분 %s초') bo_date from node.board ";
+
+  if(keyword === undefind) {
+
+  } else {
+    sql += "where bo_title like '%" + keyword + "%' ";
+  }
+
+  sql += "order by bo_date desc limit 1000";
 
   conn.query(sql, function(err, rows) {
     if( err ) {
