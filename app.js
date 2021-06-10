@@ -1,15 +1,16 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
+var createError  = require('http-errors');
+var express      = require('express');
+var path         = require('path');
 var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+var logger       = require('morgan');
 
 // require 추가
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var formRouter = require('./routes/form');    // route 예제 추가
-var mysqlRouter = require('./routes/mysql');
-var boardRouter = require('./routes/board');
+var indexRouter   = require('./routes/index');
+var usersRouter   = require('./routes/users');
+var formRouter    = require('./routes/form');    // route 예제 추가
+var mysqlRouter   = require('./routes/mysql');
+var boardRouter   = require('./routes/board');
+var commentRouter = require('./routes/comment');
 
 var app = express();
 
@@ -29,6 +30,7 @@ app.use('/users', usersRouter);
 app.use('/form', formRouter);     // route 예제 추가
 app.use('/mysql', mysqlRouter);
 app.use('/board', boardRouter);
+app.use('/comment', commentRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
