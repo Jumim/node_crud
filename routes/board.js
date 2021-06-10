@@ -24,7 +24,7 @@ router.get('/page', function(req, res, next) {
 });
 
 router.get('/page/:page', function(req, res, next) {
-  var page = req.params.page;
+  var page    = req.params.page;
   var keyword = req.query.search_keyword;   // 검색용 파라미터 받아오기(get으로 받음)
 
   console.log("keyword =>> " +keyword);
@@ -59,9 +59,9 @@ router.get('/write', function(req, res, next) {
 router.post('/write', function(req, res, next) {
 
   // form에서 받아온 정보
-  var bo_title    = req.body.title;
+  var bo_title   = req.body.title;
   var bo_content = req.body.content;
-  var bo_name  = req.body.name;
+  var bo_name    = req.body.name;
   var datas      = [bo_title, bo_content, bo_name];
 
   var sql = "insert into node.board (bo_title, bo_content, bo_name, bo_date) " +
@@ -113,9 +113,9 @@ router.get('/update/:bo_num', function(req, res, next) {
 // update.ejs에서 form 넘어 온 정보를 통해 DB update
 router.post('/update', function(req, res, next) {
   var bo_num     = req.body.num;
-  var bo_title    = req.body.title;
+  var bo_title   = req.body.title;
   var bo_content = req.body.content;
-  var bo_name  = req.body.name;
+  var bo_name    = req.body.name;
   var datas      = [bo_title, bo_name, bo_content, bo_num];
 
   var sql = "update node.board set bo_title = ?, bo_name = ?, bo_content = ? where bo_num = ?";
