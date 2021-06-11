@@ -100,7 +100,7 @@ router.get('/update/:bo_num', function(req, res, next) {
 
   var sql = "select bo_num, bo_title, bo_content, bo_name from node.board where bo_num = ?";
 
-  conn.query(sql, [po_num], function(err, row) {
+  conn.query(sql, [bo_num], function(err, row) {
     if( err ) {
       console.log('err =>> ' +err);
     }
@@ -125,7 +125,7 @@ router.post('/update', function(req, res, next) {
       console.log('err =>> ' +err);
     }
 
-    res.redirect('/board/read/' +po_num);   // 해당 게시글로 리다이렉트
+    res.redirect('/board/read/' +bo_num);   // 해당 게시글로 리다이렉트
   });
 });
 
