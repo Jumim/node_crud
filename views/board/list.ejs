@@ -1,33 +1,22 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-  <title><%= title %></title>
-  <link rel='stylesheet' href='/stylesheets/style.css' />
-</head>
-
-<body>
-  <h1><%= title %></h1>
-  <a href="/board/write">글쓰기</a>
-  <table border="1">
-    <tr>
-      <td>번호</td>
-      <td>작성자</td>
-      <td>제목</td>
-      <td>등록일</td>
-    </tr>
-    <%
-    for(var i=0; i<rows.length; i++)
-    {
-        var data = rows[i];
-    %>
-    <tr>
-      <td><%=data.bo_num%></td>
-      <td><%=data.bo_name%></td>
-      <td><a href="/board/read/<%=data.bo_num%>"><%=data.bo_title%></a></td>
-      <td><%=data.bo_date%></td>
-    </tr>
-    <%}%>
+<h1><%= title %></h1>
+<a href="/board/write">글쓰기</a>
+<table border="1">
+  <tr>
+    <td>번호</td>
+    <td>작성자</td>
+    <td>제목</td>
+    <td>등록일</td>
+  </tr>
+  <%
+  for(var i=0; i<rows.length; i++)
+  {
+      var data = rows[i];
+  %>
+  <tr>
+    <td><%=data.bo_num%></td>
+    <td><%=data.bo_name%></td>
+    <td><a href="/board/read/<%=data.bo_num%>"><%=data.bo_title%></a></td>
+    <td><%=data.bo_date%></td>
+  </tr>
+  <%}%>
 </table>
-</body>
-</html>

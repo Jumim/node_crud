@@ -1,41 +1,29 @@
-<!DOCTYPE html>
-<html lang="ko" dir="ltr">
-
-<head>
-  <meta charset="utf-8">
-  <title><%= title %></title>
-</head>
-
-<body>
-  <table border="1">
-    <tr>
-      <td>번호</td>
-      <td><%= row.bo_num %></td>
-    </tr>
-    <tr>
-      <td>제목</td>
-      <td><%= row.bo_title %></td>
-    </tr>
-    <tr>
-      <td>작성자</td>
-      <td><%= row.bo_name %></td>
-    </tr>
-    <tr>
-      <td>내용</td>
-      <td><textarea name="content" id="content" cols="30" rows="10" required readonly><%= row.bo_content %></textarea></td>
-    </tr>
-    <tr>
-      <td>작성날</td>
-      <td><%= row.bo_date %></td>
-    </tr>
-    <tr>
-      <td colspan="2">
-        <a href="/board/update/<%=row.bo_num%>">게시글 수정</a>
-        <a href="/board/list">목록</a>
-        <a href="/board/delete/<%= row.bo_num %>">삭제</a>
-      </td>
-    </tr>
-  </table>
-</body>
-
-</html>
+<table border="1">
+  <tr>
+    <td>번호</td>
+    <td><%= row.bo_num %></td>
+  </tr>
+  <tr>
+    <td>제목</td>
+    <td><%= row.bo_title %></td>
+  </tr>
+  <tr>
+    <td>작성자</td>
+    <td><%= row.bo_name %></td>
+  </tr>
+  <tr>
+    <td>내용</td>
+    <td><textarea name="content" id="content" cols="30" rows="10" required readonly><%= row.bo_content %></textarea></td>
+  </tr>
+  <tr>
+    <td>작성날</td>
+    <td><%= row.bo_date %></td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <a href="/board/update/<%=row.bo_num%>">게시글 수정</a>
+      <a href="/board/list">목록</a>
+      <a href="/board/delete/<%= row.bo_num %>">삭제</a>
+    </td>
+  </tr>
+</table>

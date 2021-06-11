@@ -1,32 +1,20 @@
-<!DOCTYPE html>
-<html lang="ko" dir="ltr">
-
-<head>
-  <meta charset="utf-8">
-  <title><%= title %></title>
-</head>
-
-<body>
-  <form class="post_update" action="/board/update" method="post">
-    <table border="1">
-      <input type="hidden" name="num" value="<%=row.bo_num%>">
-      <tr>
-        <td>제목</td>
-        <td><input type="text" name="title" id="title" value="<%=row.bo_title%>" required /></td>
-      </tr>
-      <tr>
-        <td>작성자</td>
-        <td><input type="text" name="name" id="name" value="<%=row.bo_name%>" required /></td>
-      </tr>
-      <tr>
-        <td>내용</td>
-        <td><textarea name="content" id="content" cols="30" rows="10" required><%= row.bo_content %></textarea></td>
-      </tr>
-      <tr>
-        <button type="submit" name="submit">게시글 수정</button>
-      </tr>
-    </table>
-  </form>
-</body>
-
-</html>
+<form class="post_update" action="/board/update" method="post">
+  <table border="1">
+    <input type="hidden" name="num" value="<%=row.bo_num%>">
+    <tr>
+      <td>제목</td>
+      <td><input type="text" name="title" id="title" value="<%=row.bo_title%>" required /></td>
+    </tr>
+    <tr>
+      <td>작성자</td>
+      <td><input type="text" name="name" id="name" value="<%=row.bo_name%>" required /></td>
+    </tr>
+    <tr>
+      <td>내용</td>
+      <td><textarea name="content" id="content" cols="30" rows="10" required><%= row.bo_content %></textarea></td>
+    </tr>
+    <tr>
+      <button type="submit" name="submit">게시글 수정</button>
+    </tr>
+  </table>
+</form>

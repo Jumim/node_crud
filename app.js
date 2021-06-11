@@ -1,8 +1,9 @@
-var createError  = require('http-errors');
-var express      = require('express');
-var path         = require('path');
-var cookieParser = require('cookie-parser');
-var logger       = require('morgan');
+var createError    = require('http-errors');
+var express        = require('express');
+var path           = require('path');
+var cookieParser   = require('cookie-parser');
+var logger         = require('morgan');
+var expressLayouts = require('express-ejs-layouts');
 
 // require 추가
 var indexRouter   = require('./routes/index');
@@ -17,6 +18,11 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+
+// layout setting
+app.set('layout', 'layout');
+app.set('layout extraScripts', true);
+app.use(expressLayouts);
 
 app.use(logger('dev'));
 app.use(express.json());
