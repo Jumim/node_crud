@@ -27,6 +27,10 @@ a {
   text-decoration: none;
 }
 
+textarea {
+  font: 14px 'paybooc-Bold', 'Lucida Grande', Helvetica, Arial, sans-serif;
+}
+
 body {
   width: 1920px;
   min-width: 1700px;
