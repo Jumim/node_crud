@@ -28,6 +28,7 @@ a {
 }
 
 body {
+  width: 1920px;
   min-width: 1700px;
   font: 14px 'paybooc-Bold', 'Lucida Grande', Helvetica, Arial, sans-serif;
 }
@@ -40,5 +41,5 @@ header {
 
 /* footer */
 footer {
-  
+
 }
