@@ -1,5 +1,6 @@
 /* 공통 CSS */
 
+/* 폰트 */
 @font-face {
     font-family: 'paybooc-Bold';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/paybooc-Bold.woff') format('woff');
@@ -7,6 +8,7 @@
     font-style: normal;
 }
 
+/* 기본 설정 */
 html, body, a, p, span, ul, li, table, tr, td, div, h1, h2, h3, h4, h5, h6 {
   padding : 0;
   margin: 0;
@@ -16,12 +18,16 @@ ul, li {
   list-style: none;
 }
 
-body {
-  min-width: 1700px;
-  font: 14px 'paybooc-Bold', 'Lucida Grande', Helvetica, Arial, sans-serif;
+table, tr, td {
+  border-collapse: collapse;
 }
 
 a {
   color: #000;
   text-decoration: none;
+}
+
+body {
+  min-width: 1700px;
+  font: 14px 'paybooc-Bold', 'Lucida Grande', Helvetica, Arial, sans-serif;
 }
