@@ -81,6 +81,7 @@ router.post('/write', function(req, res, next) {
 router.get('/read/:bo_num', function(req, res, next) {
   var bo_num = req.params.bo_num;
 
+  // 게시글 select
   var sql = "select bo_num, bo_title, bo_content, bo_name, date_format(bo_date, '%Y년 %m월 %d일 %H시 %i분 %s초') bo_date from node.board " +
             "where bo_num = ?";
 

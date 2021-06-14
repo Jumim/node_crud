@@ -27,3 +27,49 @@
     </td>
   </tr>
 </table>
+
+<div class="comment_area">
+  <form class="" action="/comment/add" method="post">
+    <input type="textarea" name="comment" value="">
+    <button type="submit" name="comment_submit">작성</button>
+  </form>
+  <div class="comment_list">
+    <ul class="comment_list_ul">
+
+    </ul>
+  </div>
+</div>
+
+<script type="text/javascript">
+
+// 댓글 불러오기
+
+$(function() {
+  var co_bonum = <%=row.bo_num%>;
+
+  $.ajax({
+    url: '/comment/list',
+    type: 'post',
+    data: {
+      co_bonum: co_bonum
+    },
+    success: function(rows) {
+      console.log('댓글 불러오기 성공');
+
+      //console.log(rows);
+      //console.log(rows.length);
+
+      for (var i = 0; i < rows.length; i++) {
+        $('.comment_list_ul').append('<li> <div>' + (i+1) + '. ' + rows[i].co_name + '</div> <div>' + rows[i].co_content + '</div> </li>');
+      }
+
+    },
+    error: function() {
+      console.log(' error ');
+    }
+  });
+});
+
+// 댓글 작성
+
+</script>
