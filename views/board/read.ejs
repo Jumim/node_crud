@@ -29,9 +29,12 @@
 </table>
 
 <div class="comment_area">
-  <form class="" action="/comment/add" method="post">
-    <input type="textarea" name="comment" value="">
-    <button type="submit" name="comment_submit">작성</button>
+  <form id="comment_add" method="post">
+    <input type="hidden" name="co_bonum" value="<%=row.bo_num%>">
+    <input type="text" name="co_name" value="" placeholder="이름">
+    <input type="textarea" name="co_content" value="" placeholder="내용">
+    <input type="password" name="co_password" value=""  placeholder="비밀번호">
+    <button type="button" name="comment_submit" id="comment_submit">작성</button>
   </form>
   <div class="comment_list">
     <ul class="comment_list_ul">
@@ -41,35 +44,69 @@
 </div>
 
 <script type="text/javascript">
-
-// 댓글 불러오기
-
-$(function() {
-  var co_bonum = <%=row.bo_num%>;
-
-  $.ajax({
-    url: '/comment/list',
-    type: 'post',
-    data: {
-      co_bonum: co_bonum
-    },
-    success: function(rows) {
-      console.log('댓글 불러오기 성공');
-
-      //console.log(rows);
-      //console.log(rows.length);
-
-      for (var i = 0; i < rows.length; i++) {
-        $('.comment_list_ul').append('<li> <div>' + (i+1) + '. ' + rows[i].co_name + '</div> <div>' + rows[i].co_content + '</div> </li>');
-      }
-
-    },
-    error: function() {
-      console.log(' error ');
-    }
+  $(function() {
+    // 댓글 불러오기
+    comment_list();
   });
-});
 
-// 댓글 작성
+  // 댓글 작성
+  $('#comment_submit').click(function() {
+    comment_add();
 
+    location.reload();
+  });
+
+  // 댓글 불러오기
+  function comment_list() {
+    var co_bonum = <%= row.bo_num %> ;
+
+    $.ajax({
+      url: '/comment/list',
+      type: 'post',
+      data: {
+        co_bonum: co_bonum
+      },
+      success: function(rows) {
+        console.log('댓글 불러오기 성공');
+
+        //console.log(rows);
+        //console.log(rows.length);
+
+        for (var i = 0; i < rows.length; i++) {
+          $('.comment_list_ul').append('<li> <div>' + (i + 1) + '. ' + rows[i].co_name + '</div> <div>' + rows[i].co_content + '</div> </li>');
+        }
+
+      },
+      error: function() {
+        console.log(' error ');
+      }
+    });
+  }
+
+  // 댓글 작성하기
+  function comment_add() {
+    var co_bonum = <%= row.bo_num %> ;
+    var co_name = $('input[name=co_name]').val();
+    var co_content = $('input[name=co_content]').val();
+    var co_password = $('input[name=co_password]').val();
+
+    $.ajax({
+      url: '/comment/add',
+      type: 'post',
+      data: {
+        co_bonum: co_bonum,
+        co_name: co_name,
+        co_content: co_content,
+        co_password: co_password
+      },
+      success: function() {
+        console.log('comment insert');
+      },
+      error: function() {
+        console.log('error');
+      }
+    });
+
+    return false;
+  }
 </script>
