@@ -5,6 +5,23 @@ var cookieParser   = require('cookie-parser');
 var logger         = require('morgan');
 var expressLayouts = require('express-ejs-layouts');
 
+//채팅
+var http = require('http');
+var server = http.Server(app);
+
+/*
+var app = require('express')();
+var http = require('http');
+var server = http.createServer(app).listen(app.get('port'), function(){
+  console.log("Express server listening on port " + app.get('port'));
+});
+
+var io = socket(server);
+io.sockets.on('connection', function () {
+  console.log('hello world im a hot socket');
+});
+*/
+
 // require 추가
 var indexRouter   = require('./routes/index');
 var usersRouter   = require('./routes/users');
@@ -56,6 +73,25 @@ app.use(function(err, req, res, next) {
   res.render('error');
 
   cookieParser(process.env.COOKIE_SECRET, { sameSite: "none", secure: true });
+});
+
+/* socket.io 추가 */
+app.io = require('socket.io')();
+
+app.io.on('connection', function(socket){
+
+  console.log("a user connected");
+  socket.broadcast.emit('hi');
+
+  socket.on('disconnect', function(){
+      console.log('user disconnected');
+  });
+
+  socket.on('chatMessage', function(msg){
+      console.log('message: ' + msg);
+      app.io.emit('chatMessage', msg);
+  });
+
 });
 
 module.exports = app;

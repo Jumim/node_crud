@@ -1,21 +1,25 @@
-<div id="main">
-  <input type="text" name="test" id="test">
-  <button type="button" name="button_submit"></button>
+<link rel='stylesheet' href='/stylesheets/chat/chat.css' />
+
+<div id="chat_main">
+  <ul id="chat_ul">
+
+  </ul>
+  <form id="chatForm" onsubmit="return false">
+    <input type="text" id="msg" placeholder="메시지를 입력해 주세요.">
+    <button type="button" id="send">전송</button>
+  </form>
 </div>
 
 <script type="text/javascript">
-var socket = io();
+  var socket = io();
 
-socket.on('connet', function(){
-  var input = $('#test');
-  input.value = '접속 완료';
-});
+  $('form').submit(function() {
+    socket.emit('chat message', $('#msg').val());
+    $('#msg').val('');
+    return false;
+  });
 
-/* 전송 실행하는 함수 */
-function send(){
-  var message = $('#test').value;
-  $('#test').value = "";
-  socket.emit('send', {msg: message});
-}
-
+  socket.on('chat message', function(msg) {
+    $('#chat_ul').append($('<li>').text(msg));
+  });
 </script>

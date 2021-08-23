@@ -1,0 +1,35 @@
+form {
+  padding: 3px;
+  bottom: 0;
+  width: 400px;
+  border: 1px solid;
+}
+
+form input {
+  border: 0;
+  padding: 10px;
+  width: 320px;
+  margin-right: .5%;
+}
+
+form button {
+  width: 50px;
+  background: rgb(148, 113, 232);
+  border: none;
+  padding: 10px;
+  color: #fff;
+}
+
+#chat_ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+#chat_ul li {
+  padding: 5px 10px;
+}
+
+#chat_ul li:nth-child(odd) {
+  background: #eee;
+}
