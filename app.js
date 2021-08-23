@@ -4,12 +4,12 @@ var path           = require('path');
 var cookieParser   = require('cookie-parser');
 var logger         = require('morgan');
 var expressLayouts = require('express-ejs-layouts');
-
+/*
 //채팅
 var http = require('http');
 var server = http.Server(app);
 
-/*
+
 var app = require('express')();
 var http = require('http');
 var server = http.createServer(app).listen(app.get('port'), function(){
