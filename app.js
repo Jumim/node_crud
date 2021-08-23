@@ -12,6 +12,7 @@ var formRouter    = require('./routes/form');    // route 예제 추가
 var mysqlRouter   = require('./routes/mysql');
 var boardRouter   = require('./routes/board');
 var commentRouter = require('./routes/comment');
+var chatRouter    = require('./routes/chat');
 
 var app = express();
 
@@ -37,6 +38,7 @@ app.use('/form', formRouter);     // route 예제 추가
 app.use('/mysql', mysqlRouter);
 app.use('/board', boardRouter);
 app.use('/comment', commentRouter);
+app.use('/chat', chatRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -52,6 +54,8 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
+
+  cookieParser(process.env.COOKIE_SECRET, { sameSite: "none", secure: true });
 });
 
 module.exports = app;

@@ -1,0 +1,21 @@
+<div id="main">
+  <input type="text" name="test" id="test">
+  <button type="button" name="button_submit"></button>
+</div>
+
+<script type="text/javascript">
+var socket = io();
+
+socket.on('connet', function(){
+  var input = $('#test');
+  input.value = '접속 완료';
+});
+
+/* 전송 실행하는 함수 */
+function send(){
+  var message = $('#test').value;
+  $('#test').value = "";
+  socket.emit('send', {msg: message});
+}
+
+</script>
