@@ -6,7 +6,7 @@
   </ul>
   <form id="chatForm" onsubmit="return false">
     <input type="text" id="msg" placeholder="메시지를 입력해 주세요.">
-    <button type="button">전송</button>
+    <button type="submit">전송</button>
   </form>
 </div>
 
@@ -14,12 +14,12 @@
   var socket = io();
 
   $('form').submit(function() {
-    socket.emit('chat message', $('#msg').val());
+    socket.emit('chatMessage', $('#msg').val());
     $('#msg').val('');
     return false;
   });
 
-  socket.on('chat message', function(msg) {
+  socket.on('chatMessage', function(msg) {
     $('#chat_ul').append($('<li>').text(msg));
   });
 </script>

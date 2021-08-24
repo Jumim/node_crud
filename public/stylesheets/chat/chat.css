@@ -2,11 +2,12 @@
   list-style-type: none;
   margin: 0;
   padding: 0;
+  width: 410px;
 }
 
 #chat_ul li {
   padding: 5px 10px;
-  font-size: 20px;
+  font-size: 14px;
   color: #000;
 }
 
@@ -34,4 +35,5 @@ form button {
   border: none;
   padding: 10px;
   color: #fff;
+  cursor: pointer;
 }
